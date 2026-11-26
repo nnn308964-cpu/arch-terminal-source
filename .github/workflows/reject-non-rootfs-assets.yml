@@ -14,7 +14,7 @@ env:
   FLUTTER_VERSION: '3.35.3'
 
 jobs:
-  quality:
+  validate-public-assets-repository:
     name: Analyze and test
     runs-on: ubuntu-latest
     steps:
@@ -40,7 +40,7 @@ jobs:
   android-release:
     name: Build Android APK
     runs-on: ubuntu-latest
-    needs: quality
+    needs: validate-public-assets-repository
     steps:
       - name: Checkout
         uses: actions/checkout@v4
