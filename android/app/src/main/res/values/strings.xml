@@ -1,0 +1,3 @@
+<resources>
+    <string name="terminal_session_service_description">Keeps a user-started Arch Terminal session visible and active while the app is in the background.</string>
+</resources>

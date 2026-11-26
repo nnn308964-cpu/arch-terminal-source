@@ -1,0 +1,2 @@
+b6cda23c03ff5b06bed13bfcc6e12436ecef59cceee5a69c721242edc73b7691  /home/ubuntu/arch_terminal_flutter/app/android/app/src/arm64/assets/bin/arm64-v8a/proot
+42a4eeaa038994ffd31fa173256ef2f0ef511358eeb41b9ea1f8626391b9b319  /home/ubuntu/arch_terminal_flutter/app/android/app/src/arm64/assets/rootfs/arch-aarch64.tar

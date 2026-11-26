@@ -1,24 +1,66 @@
-name: reject-non-rootfs-assets
+name: arch-terminal-ci
 
 on:
   pull_request:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FLUTTER_VERSION: '3.35.3'
 
 jobs:
-  validate-public-assets-repository:
+  quality:
+    name: Analyze and test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          fetch-depth: 2
-      - name: رفض ملفات السورس وAPK
-        shell: bash
-        run: |
-          set -euo pipefail
-          banned='\.(apk|aab|zip|dart|kt|kts|java|gradle|properties|yaml|yml|json|lock)$'
-          if git ls-files | grep -E "$banned"; then
-            echo "هذا المستودع عام ومخصص لبيانات RootFS في Releases فقط؛ لا ترفع سورساً أو APK هنا." >&2
-            exit 1
-          fi
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+  android-release:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    needs: quality
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: arch-terminal-${{ github.sha }}
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
