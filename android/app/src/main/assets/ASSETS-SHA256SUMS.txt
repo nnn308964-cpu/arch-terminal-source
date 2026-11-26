@@ -1,0 +1,2 @@
+b6cda23c03ff5b06bed13bfcc6e12436ecef59cceee5a69c721242edc73b7691  assets/bin/arm64-v8a/proot
+bc33fbf6be9549220307152a4f9f3dddacd8c7267ed726bbed005a0e8eb3daed  assets/bin/armeabi-v7a/proot

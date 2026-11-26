@@ -1,0 +1,2 @@
+bc33fbf6be9549220307152a4f9f3dddacd8c7267ed726bbed005a0e8eb3daed  /home/ubuntu/arch_terminal_flutter/app/android/app/src/armv7/assets/bin/armeabi-v7a/proot
+ebe0fa119dea45e3af0aa61785676bdbf417bc5f754d529b87255dbf0ca4e3f0  /home/ubuntu/arch_terminal_flutter/app/android/app/src/armv7/assets/rootfs/arch-armv7.tar
