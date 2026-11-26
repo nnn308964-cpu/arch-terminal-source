@@ -33,4 +33,8 @@ flutter build apk --release
 - `test/`: اختبارات Flutter.
 - `docs/`: توثيق التسليم وتصميم الواجهة وسلوك RootFS.
 
+## الترخيص
+
+هذا المشروع مرخّص بموجب **MIT License**. راجع ملف [LICENSE](LICENSE) للتفاصيل.
+
 راجع [POLICY.md](POLICY.md) لقواعد المساهمة والنشر.
