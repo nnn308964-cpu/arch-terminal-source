@@ -1,14 +1,14 @@
 # Arch Terminal
 
-تطبيق طرفية محلي مبني باستخدام Flutter لأجهزة Android وLinux وWindows، مع بيئة Arch Linux محلية وإدارة RootFS ودعم جلسات الطرفية وميزات مساعدة اختيارية.
+A local-first terminal application built with Flutter for Android, Linux, and Windows. Arch Terminal provides a local Arch Linux environment, RootFS management, terminal sessions, and optional assistant features.
 
-## المتطلبات
+## Requirements
 
-- Flutter SDK المتوافق مع Dart `^3.9.0`
-- Android SDK وJava 21 لبناء Android
-- اتصال بالإنترنت عند جلب حزم Flutter وملفات RootFS المطلوبة للتثبيت الأولي
+- Flutter SDK compatible with Dart `^3.9.0`
+- Android SDK and Java 21 for Android builds
+- Internet access when Flutter packages or the RootFS required for first-time setup must be downloaded
 
-## التشغيل محليًا
+## Local development
 
 ```bash
 flutter pub get
@@ -17,24 +17,25 @@ flutter test
 flutter run
 ```
 
-لبناء نسخة Android تجريبية:
+Build a release Android APK locally:
 
 ```bash
 flutter build apk --release
 ```
 
-تُبنى نسخة APK تلقائيًا عبر GitHub Actions عند الدفع إلى `main` أو عند تشغيل سير عمل البناء يدويًا. النسخة الحالية هي `1.0.0+106`.
+GitHub Actions automatically runs analysis, tests, and an Android release build when changes are pushed to `main` or when the workflow is started manually. The current application version is `1.0.0+106`.
 
-## بنية المشروع
+## Project structure
 
-- `lib/`: واجهة التطبيق ومنطق الطرفية وإدارة الجلسات.
-- `android/`: تكامل Android وخدمات التثبيت والتشغيل في الخلفية.
-- `packages/xterm/`: حزمة الطرفية المحلية المضمنة.
-- `test/`: اختبارات Flutter.
-- `docs/`: توثيق التسليم وتصميم الواجهة وسلوك RootFS.
+- `lib/`: Flutter UI, terminal logic, and session management.
+- `android/`: Android integration and background installation/runtime services.
+- `packages/xterm/`: Embedded local terminal package.
+- `test/`: Flutter and application tests.
+- `docs/`: Delivery notes, UI references, and RootFS documentation.
+- `tools/`: Verification and source snapshot utilities.
 
-## الترخيص
+## License
 
-هذا المشروع مرخّص بموجب **MIT License**. راجع ملف [LICENSE](LICENSE) للتفاصيل.
+This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for the full text.
 
-راجع [POLICY.md](POLICY.md) لقواعد المساهمة والنشر.
+See [POLICY.md](POLICY.md) for contribution and publishing rules.
