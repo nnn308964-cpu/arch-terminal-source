@@ -1,4 +1,4 @@
-# Delivery Report — Arch Terminal v010
+# Delivery Report — Arch Terminal v1.0.1+107
 
 ## Current result
 
@@ -6,7 +6,7 @@ The project provides a shared Flutter application for Android, Linux, and Window
 
 | Area | Current result |
 |---|---|
-| Flutter / Dart | 3.47.0 / 3.13.0 |
+| Flutter / Dart | Flutter 3.35.3 / Dart 3.9.2 in CI |
 | Terminal UI | xterm 4.0.0 |
 | PTY | kyroon_pty 1.0.6 |
 | Android APK | One universal APK supporting `arm64-v8a` and `armeabi-v7a` |

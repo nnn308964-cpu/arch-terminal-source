@@ -23,7 +23,7 @@ Build a release Android APK locally:
 flutter build apk --release
 ```
 
-GitHub Actions automatically runs analysis, tests, and an Android release build when changes are pushed to `main` or when the workflow is started manually. The current application version is `1.0.0+106`.
+GitHub Actions automatically runs analysis, tests, and an Android release build when changes are pushed to `main` or when the workflow is started manually. The current application version is `1.0.1+107`.
 
 ## Project structure
 
@@ -33,6 +33,14 @@ GitHub Actions automatically runs analysis, tests, and an Android release build 
 - `test/`: Flutter and application tests.
 - `docs/`: Delivery notes, UI references, and RootFS documentation.
 - `tools/`: Verification and source snapshot utilities.
+
+## Project documentation
+
+- [Contributing](CONTRIBUTING.md): development workflow and pull request checklist.
+- [Security](SECURITY.md): local-first data handling and vulnerability reporting.
+- [Changelog](CHANGELOG.md): release history and validation notes.
+- [Release checklist](docs/RELEASE_CHECKLIST.md): pre-release quality and publishing checks.
+- [Android build notes](android/README.md): SDK, NDK, and signing guidance.
 
 ## License
 
