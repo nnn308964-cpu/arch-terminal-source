@@ -4,7 +4,7 @@
 
 ## المتطلبات
 
-- Flutter SDK المتوافق مع Dart `^3.13.0`
+- Flutter SDK المتوافق مع Dart `^3.9.0`
 - Android SDK وJava 21 لبناء Android
 - اتصال بالإنترنت عند جلب حزم Flutter وملفات RootFS المطلوبة للتثبيت الأولي
 
