@@ -1,4 +1,4 @@
-/// الإجراء الذي تعرضه بوابة إعداد Arch بعد قراءة الصلاحيات وحالة الملفات.
+/// Action displayed by the Arch setup gate after reading permissions and file state.
 enum ArchSetupAction {
   openPermissionGate,
   useInstalledRootfs,
@@ -8,7 +8,7 @@ enum ArchSetupAction {
 
 enum ArchPermissionStep { notification, battery, sharedStorage, ready }
 
-/// ترتيب البوابة ثابت حتى يعرف المستخدم بوضوح ما الذي يحتاجه قبل الإعداد.
+/// The gate order is fixed so users can clearly see what setup still requires.
 ArchPermissionStep nextArchPermissionStep({
   required bool notificationsGranted,
   required bool batteryOptimizationIgnored,
@@ -20,8 +20,8 @@ ArchPermissionStep nextArchPermissionStep({
   return ArchPermissionStep.ready;
 }
 
-/// لا يبدأ إعداد Arch قبل منح الصلاحيات المطلوبة. بعد ذلك يُفضَّل دائماً
-/// التشغيل من RootFS المثبت أو الأرشيف العام الذي سيُتحقَّق منه قبل استخراجه.
+/// Arch setup does not start until the required permissions are granted. After
+/// that, the installed RootFS or verified public archive is preferred.
 ArchSetupAction decideArchSetupAction({
   required bool notificationsGranted,
   required bool batteryOptimizationIgnored,

@@ -17,8 +17,8 @@ abstract final class ArabicGridText {
       isArabic(codePoint) || isDigit(codePoint) || !isLatin(codePoint);
 
   /// Shapes every Arabic token then reverses token order. Digit tokens preserve
-  /// their own character order, e.g. `ملف 123 محفوظ` paints as
-  /// `ظوفحم 123 فلم` in an LTR grid and reads correctly right-to-left.
+  /// their own character order, e.g. an Arabic phrase with digits is painted
+  /// in reversed token order in an LTR grid and reads correctly right-to-left.
   static List<int> visualCells(List<int> logical) {
     if (logical.isEmpty) return const <int>[];
     final tokens = <_GridToken>[];

@@ -4,8 +4,8 @@ import 'dart:io';
 import 'ai_settings.dart';
 import 'ai_skill_discovery.dart';
 
-// القائمتان تمرّان إلى تدقيق الأدلة قبل تخزينهما، لذلك لا يمكن استخدام
-// initializing formal من دون تغيير ترتيب ومعنى تهيئة الحقول النهائية.
+// Both lists pass through evidence auditing before storage, so an initializing
+// formal cannot be used without changing final-field initialization semantics.
 // ignore_for_file: prefer_initializing_formals
 
 class AiWorkflowStep {

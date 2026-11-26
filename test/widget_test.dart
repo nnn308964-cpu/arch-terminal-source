@@ -304,7 +304,7 @@ void main() {
       expect(queue.tryReserve(), isTrue);
       expect(queue.tryReserve(), isFalse);
 
-      // تمثل هذه العملية اكتمال محاولة بدء فشلت داخل _startSession.
+      // This represents a startup attempt that failed inside _startSession.
       queue.release();
 
       expect(queue.isReserved, isFalse);
@@ -317,7 +317,7 @@ void main() {
 
     expect(queue.tryReserve(), isTrue);
 
-    // تمثل هذه الحالة جلسة بدأت بنجاح؛ لا يصح تحرير الحجز هنا.
+    // This represents a successful session start; the reservation must remain held.
     expect(queue.isReserved, isTrue);
     expect(queue.tryReserve(), isFalse);
   });
@@ -744,7 +744,7 @@ void main() {
       terminal.resize(80, 24);
       terminal.write(source);
 
-      // الرسم البصري المتصل يعيد ترتيب glyphs فقط ولا يبدل buffer الأصلي.
+      // The visual renderer reorders glyphs only; it does not change the original buffer.
       final visual = String.fromCharCodes(
         ArabicGridText.visualCells(source.runes.toList(growable: false)),
       );
