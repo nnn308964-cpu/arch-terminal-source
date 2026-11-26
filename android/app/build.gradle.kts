@@ -8,10 +8,11 @@ val minimumAndroidSdk = 24
 
 android {
     namespace = "com.example.arch_terminal"
-    // flutter_secure_storage 11 uses Android API 37 at compile time; this does
-    // not change the app's API 24 installation minimum.
+    // The current Android plugins compile against API 37; this does not change
+    // the app's API 24 installation minimum.
     compileSdk = 37
-    ndkVersion = flutter.ndkVersion
+    // Native plugins in this release require NDK 28.2.13676358.
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
