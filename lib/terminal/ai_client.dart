@@ -4,6 +4,10 @@ import 'dart:io';
 import 'ai_settings.dart';
 import 'ai_skill_discovery.dart';
 
+// القائمتان تمرّان إلى تدقيق الأدلة قبل تخزينهما، لذلك لا يمكن استخدام
+// initializing formal من دون تغيير ترتيب ومعنى تهيئة الحقول النهائية.
+// ignore_for_file: prefer_initializing_formals
+
 class AiWorkflowStep {
   const AiWorkflowStep({required this.title, required this.detail});
   final String title;
