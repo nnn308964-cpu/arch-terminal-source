@@ -45,7 +45,7 @@ android {
 
     buildTypes {
         release {
-            // TODO: replace the debug signing key with a protected release key before publishing.
+            // Temporary CI/test signing. Use a protected production keystore before public distribution.
             signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             isShrinkResources = true
