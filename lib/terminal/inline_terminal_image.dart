@@ -25,8 +25,8 @@ class InlineTerminalImageDecoder {
   static const _maxPixels = 2 * 1024 * 1024;
   static const _defaultMaxPendingControlChars = _maxPayloadChars + 64 * 1024;
   InlineTerminalImageDecoder({
-    this._maxPendingControlChars = _defaultMaxPendingControlChars,
-  });
+    int maxPendingControlChars = _defaultMaxPendingControlChars,
+  }) : _maxPendingControlChars = maxPendingControlChars;
 
   final int _maxPendingControlChars;
   String _pending = '';
