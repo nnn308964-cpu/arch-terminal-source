@@ -38,7 +38,7 @@ dependencies:
     path: packages/xterm
   kyroon_pty: ^1.0.6
   arabic_bidi: ^1.0.0
-  flutter_secure_storage: ^10.3.4
+  flutter_secure_storage: ^11.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
