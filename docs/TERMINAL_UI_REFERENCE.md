@@ -1,13 +1,13 @@
-# مرجع إعادة تصميم واجهة الطرفية
+# Terminal UI Redesign Reference
 
-يعتمد التصميم المحدث على ملاحظات الفيديو المرفق ومراجع واجهات طرفية Android. الهدف هو الحفاظ على مساحة تنفيذ الأوامر كالعنصر الرئيس، مع جعل أدوات التحكم متاحة من دون تغطية الطرفية.
+The updated design is based on the attached video and Android terminal UI references. The goal is to keep command execution as the primary surface while making controls available without covering the terminal.
 
-| العنصر | قرار التصميم |
+| Element | Design decision |
 |---|---|
-| شاشة الطرفية | خلفية سوداء شبه كاملة، خط أحادي المسافة، مؤشر سماوي وحالة جلسة واضحة. |
-| لوحة الأوامر | لوحة جانبية من الحافة، تُفتح بزر `<` صغير قابل للوصول ولا تشغل الشاشة دائماً. |
-| شريط الحالة | شارات قصيرة لحالة PRoot وArch والاتصال/التنزيل مع ألوان أخضر/كهرماني/سماوي. |
-| تنزيل RootFS | إشعار داخل التطبيق يعرض المرحلة والنسبة والحجم المنقول والسرعة، ثم مرحلة التحقق والاستخراج. |
-| الإدخال | يبقى سطر الإدخال قريباً من الطرفية وتُحفظ المساحة عند ظهور لوحة المفاتيح. |
+| Terminal screen | Nearly black background, monospaced font, cyan cursor, and clear session status. |
+| Command panel | Edge-aligned side panel opened by a small accessible `<` button; it is not permanently visible. |
+| Status bar | Compact badges for PRoot, Arch, connection, and download state using green, amber, and cyan accents. |
+| RootFS download | In-app notification showing stage, percentage, transferred size, speed, verification, and extraction. |
+| Input | The input row stays close to the terminal and preserves space when the keyboard appears. |
 
-المراجع: الفيديو المرفق من المستخدم، واجهات Termux الظاهرة في Google Play، ومناقشة تحديث UI في مستودع Termux.
+References: the user-provided video, Termux interfaces shown on Google Play, and the UI update discussion in the Termux repository.

@@ -1,10 +1,10 @@
-# سياسة مستودع Arch Terminal
+# Arch Terminal Repository Policy
 
-هذا المستودع هو مستودع المصدر الرسمي لتطبيق **Arch Terminal**، ويحتوي على مشروع Flutter/Android وملفات الاختبار والتوثيق اللازمة لبناء التطبيق.
+This repository is the official source repository for **Arch Terminal**. It contains the Flutter/Android project, tests, and documentation required to build the application.
 
-## قواعد النشر
+## Publishing rules
 
-- لا تُرفع مفاتيح التوقيع أو كلمات المرور أو الرموز السرية.
-- لا تُرفع مجلدات البناء المحلية مثل `build/` و`.gradle/` و`.dart_tool/`.
-- تُنشر ملفات APK الناتجة من CI كـ GitHub Actions Artifacts أو Releases، ولا تُحفظ داخل شجرة المصدر.
-- يجب تشغيل الاختبارات والتحليل قبل دمج التغييرات.
+- Never commit signing keys, passwords, tokens, or other secrets.
+- Never commit local build directories such as `build/`, `.gradle/`, or `.dart_tool/`.
+- APK files produced by CI are published as GitHub Actions artifacts or Releases and are not stored in the source tree.
+- Run analysis and tests before merging changes.

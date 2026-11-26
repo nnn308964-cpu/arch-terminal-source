@@ -1,12 +1,12 @@
-# أصول Android المضمّنة
+# Embedded Android Assets
 
-يبقى ملفا PRoot الصغيران داخل APK الشامل، بينما **لا توجد أي ملفات RootFS لـ Arch Linux داخل السورس أو داخل APK**.
+The two small PRoot binaries remain inside the universal APK, while **no Arch Linux RootFS archives are included in the source tree or the APK**.
 
-| ABI | PRoot المضمّن | ملف RootFS الخارجي | مصدر التنزيل |
+| ABI | Embedded PRoot | External RootFS archive | Download source |
 |---|---|---|---|
 | `arm64-v8a` | `bin/arm64-v8a/proot` | `arch-aarch64.tar` | GitHub Release `arch-rootfs-v010` |
 | `armeabi-v7a` | `bin/armeabi-v7a/proot` | `arch-armv7.tar` | GitHub Release `arch-rootfs-v010` |
 
-عند الضغط على «تنزيل وإعداد Arch»، يختار التطبيق ABI المدعوم، ثم ينزّل الأرشيف المقابل إلى `files/downloads/rootfs/` داخل مساحة التطبيق، ويتحقق من SHA-256 المحدد في `rootfs-release-manifest.json` و`RootfsDownloadManager.kt`. بعدها يستخرج محتوى الأرشيف إلى `files/arch/<abi>/`، وهو المسار الذي يستخدمه PRoot. يُحذف الأرشيف المؤقت بعد اكتمال التثبيت بنجاح.
+When the user taps **Download and set up Arch**, the app selects a supported ABI, downloads the matching archive to `files/downloads/rootfs/` inside private app storage, and verifies the SHA-256 value defined in `rootfs-release-manifest.json` and `RootfsDownloadManager.kt`. It then extracts the archive to `files/arch/<abi>/`, the path used by PRoot. The temporary archive is deleted after successful installation.
 
-لا تُحمّل أصول ARM64 على جهاز ARM32 أو العكس. يحتفظ التطبيق ببيئة Arch المستخرجة محلياً، لذلك لا يحتاج تشغيل الجلسات اللاحقة إلى تنزيل جديد.
+ARM64 assets are never loaded on an ARM32 device, and vice versa. The extracted Arch environment is kept locally, so later sessions do not require another download.

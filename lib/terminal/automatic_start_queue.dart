@@ -1,7 +1,7 @@
-/// يمنع تداخل محاولات التشغيل التلقائي القصيرة فقط.
+/// Prevents overlapping short automatic-start attempts.
 ///
-/// لا يحتفظ هذا الحجز بحالة الجلسة طويلة العمر؛ إذ تتحقق الواجهة من
-/// [TerminalSession.isRunning] قبل بدء أي جلسة جديدة.
+/// This reservation does not hold long-lived session state; the UI checks
+/// [TerminalSession.isRunning] before starting a new session.
 class AutomaticStartQueue {
   bool _reserved = false;
 
@@ -18,7 +18,7 @@ class AutomaticStartQueue {
   }
 }
 
-/// يحرر الحجز فقط عندما تفشل محاولة البدء أو لا تبقى الجلسة عاملة بعدها.
+/// Releases the reservation only when startup fails or the session is no longer running.
 bool shouldReleaseAutomaticStartReservation({
   required bool startSucceeded,
   required bool sessionRunning,
@@ -26,8 +26,8 @@ bool shouldReleaseAutomaticStartReservation({
   return !startSucceeded || !sessionRunning;
 }
 
-/// يمنع إعادة الإقلاع التلقائية بعد «إنهاء الجلسة» الصريح من الإشعار.
-/// يعاد فتح هذا الحاجز فقط عندما يطلب المستخدم إعداد Arch من الواجهة.
+/// Prevents an automatic restart after the user explicitly ends a session from
+/// the notification. The gate reopens only when the user requests Arch setup.
 bool canQueueAutomaticStart({required bool manualEndRequested}) =>
     !manualEndRequested;
 

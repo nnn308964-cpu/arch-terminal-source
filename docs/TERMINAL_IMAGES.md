@@ -1,16 +1,16 @@
-# صور الطرفية المضمنة
+# Inline Terminal Images
 
-تعمل الشاشة كطرفية فعلية: `kyroon_pty` يربط عملية PRoot/Bash بـ PTY، و`xterm` المحلي يحلل ANSI ويرسم الخلايا. لا تستبدل طبقة الصور هذا المسار ولا تحوّل الطرفية إلى مكوّن طباعة نصية.
+The screen behaves as a real terminal: `kyroon_pty` connects the PRoot/Bash process to a PTY, and the local `xterm` parser handles ANSI data and paints cells. The image layer does not replace this path or turn the terminal into a text-printing component.
 
-يدعم التطبيق في هذا الإصدار بروتوكول **iTerm2 Inline Image** عبر إطار `OSC 1337;File=...;inline=1:<base64>`. تفصل المعالجة إطار الصورة قبل تمريره إلى `xterm`، ثم تظهر معاينة محدودة فوق الطرفية. لذلك لا تدخل بيانات Base64 أو رموز الصورة في buffer الطرفية، أو النص المنسوخ، أو سجل الجلسة العميقة.
+This release supports the **iTerm2 Inline Image** protocol through an `OSC 1337;File=...;inline=1:<base64>` frame. The decoder removes the image frame before passing the remaining stream to `xterm`, then displays a bounded preview above the terminal. Base64 data and image control sequences therefore do not enter the terminal buffer, copied text, or deep session transcript.
 
-| حد الحماية | القيمة | الغرض |
+| Safety limit | Value | Purpose |
 |---|---:|---|
-| أقصى payload مشفر | 2 MiB | منع إدخال Base64 كبير إلى الذاكرة أو الواجهة |
-| أقصى أبعاد صورة | 2,000,000 بكسل | تجنب فك صورة تستهلك ذاكرة مفرطة |
-| المعاينات المحتفظ بها | 2 | الحد من الصور المتزامنة في واجهة Flutter |
-| حجم المعاينة | 220 × 220 نقطة كحد أقصى | منع تغطية الطرفية أو إعادة الرسم المكثف |
+| Maximum encoded payload | 2 MiB | Prevent large Base64 input from reaching memory or the UI |
+| Maximum image dimensions | 2,000,000 pixels | Avoid decoding images that consume excessive memory |
+| Retained previews | 2 | Limit concurrent images in the Flutter UI |
+| Preview size | 220 × 220 points maximum | Prevent terminal coverage and expensive redraws |
 
-تُرفض الإطارات غير الصالحة أو المتجاوزة للحدود وتظهر العبارة `[inline image rejected]` بدلاً منها، من دون حفظ بياناتها الثنائية. لا يدعم هذا الإصدار SIXEL أو Kitty Graphics؛ تلك البروتوكولات تتطلب محللات ورسومات منفصلة ولا يجري ادعاء دعمها.
+Invalid or oversized frames are rejected and replaced with `[inline image rejected]`; their binary data is not retained. This release does not support SIXEL or Kitty Graphics. Those protocols require separate parsers and rendering paths, so the application does not claim to support them.
 
-يغطي اختبار الأداء السلوكي إطاراً مشفراً يتجاوز 2 MiB ويطلب رفضه خلال ثانيتين؛ وهذا سقف استجابة متساهل مخصص لاكتشاف أي مسار قد يحاول فك Base64 كبير على واجهة الطرفية.
+The behavioral performance test covers an encoded frame larger than 2 MiB and expects rejection within two seconds. This intentionally generous ceiling detects paths that might attempt to decode a large Base64 payload on the terminal UI thread.
