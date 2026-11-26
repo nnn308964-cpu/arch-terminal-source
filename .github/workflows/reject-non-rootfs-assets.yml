@@ -15,7 +15,7 @@ env:
 
 jobs:
   validate-public-assets-repository:
-    name: Analyze and test
+    name: validate-public-assets-repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
